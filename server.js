@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-// Routes
+// Routes start here
 // =============================================================
 
 // Basic route that sends the user to the index page
@@ -54,7 +54,32 @@ app.post("/api/notes", function(req, res) {
     });
 });
 
+// Deletes the note object with requested id from the db.json file, returns the deleted note; if no such id exists returns false
+app.delete("/api/notes/:id", function(req, res) {
+    const deleteId = req.params.id;
+    fs.readFile("db/db.json", "utf8", function(error, response) {
+        if (error) {
+            console.log(error);
+        }
+        let notes = JSON.parse(response);
+        if (deleteId <= notes.length) {
+            
+            res.json(notes.splice(deleteId-1,1));
+            // Reassign the ids of all notes
+            for (let i=0; i<notes.length; i++) {
+                notes[i].id = i+1;
+            }
+            fs.writeFile("db/db.json", JSON.stringify(notes, null, 2), function(err) {
+                if (err) throw err;
+            });
+        } else {
+            res.json(false);
+        }
+        
 
+    });
+    
+});
 
 // Starts the server to begin listening
 // =============================================================
