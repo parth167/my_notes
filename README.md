@@ -1,8 +1,13 @@
 # my_notes
 
-## live app
+![MIT license](https://img.shields.io/badge/license-MIT-green)
 
-See the live app here: https://whispering-falls-77182.herokuapp.com/
+## Links to Deployed Pages
+
+- See the live app here: https://whispering-falls-77182.herokuapp.com/
+- [Link to Git Hub Repository](https://github.com/parth167/my_notes.git)
+- [LinkedIn](https://www.linkedin.com/in/parth-patel-4725381b5/)
+- [GitHub](https://github.com/parth167/)
 
 # Project Description
 
